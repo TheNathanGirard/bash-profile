@@ -130,6 +130,7 @@ install_dependencies() {
             ${SUDO_CMD} ${PACKAGER} install -n ${DEPENDENCIES}
             ;;
         *)
+            sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
             ${SUDO_CMD} ${PACKAGER} install -yq ${DEPENDENCIES}
             ;;
     esac
