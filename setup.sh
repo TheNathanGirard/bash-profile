@@ -130,11 +130,15 @@ install_dependencies() {
             ${SUDO_CMD} ${PACKAGER} install -n ${DEPENDENCIES}
             ;;
         *)
-            sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+            if [ -f "/etc/apt/sources.list.d/zhangsongcui3371-ubuntu-fastfetch-noble.sources" ]
+            then
+                echo "Fastfetch Repository Already Exists"
+            else
+                    sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+            fi
             ${SUDO_CMD} ${PACKAGER} install -yq ${DEPENDENCIES}
             ;;
     esac
-
     install_font
 }
 
