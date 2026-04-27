@@ -140,11 +140,11 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 # aliases to modified commands
 alias cp='cp -i'
 alias mv='mv -i'
-if command -v trash &> /dev/null; then
-    alias rm='trash -v'
-else
-    alias rm='rm -i'  # fallback to interactive remove
-fi
+# if command -v trash &> /dev/null; then
+#     alias rm='trash -v'
+# else
+#     alias rm='rm -i'  # fallback to interactive remove
+# fi
 alias mkdir='mkdir -p'
 alias ps='ps auxf'
 alias less='less -R'
