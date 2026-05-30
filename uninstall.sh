@@ -49,7 +49,7 @@ determine_sudo_command() {
 }
 
 uninstall_dependencies() {
-    DEPENDENCIES='bash-completion bat tree multitail fastfetch neovim trash-cli'
+    DEPENDENCIES='bash-completion bat tree multitail fastfetch neovim'
 
     print_colored "$YELLOW" "Uninstalling dependencies..."
     if [ "$PACKAGER" = "pacman" ]; then
@@ -63,11 +63,11 @@ uninstall_dependencies() {
     elif [ "$PACKAGER" = "nala" ] || [ "$PACKAGER" = "apt" ]; then
         ${SUDO_CMD} ${PACKAGER} purge -y ${DEPENDENCIES}
     elif [ "$PACKAGER" = "emerge" ]; then
-        ${SUDO_CMD} ${PACKAGER} --deselect app-shells/bash-completion sys-apps/bat app-text/tree app-text/multitail app-misc/fastfetch app-editors/neovim app-misc/trash-cli
+        ${SUDO_CMD} ${PACKAGER} --deselect app-shells/bash-completion sys-apps/bat app-text/tree app-text/multitail app-misc/fastfetch
     elif [ "$PACKAGER" = "xbps-install" ]; then
         ${SUDO_CMD} xbps-remove -Ry ${DEPENDENCIES}
     elif [ "$PACKAGER" = "nix-env" ]; then
-        ${SUDO_CMD} ${PACKAGER} -e bash-completion bat tree multitail fastfetch neovim trash-cli
+        ${SUDO_CMD} ${PACKAGER} -e bash-completion bat tree multitail fastfetch neovim
     elif [ "$PACKAGER" = "dnf" ] || [ "$PACKAGER" = "yum" ]; then
         ${SUDO_CMD} ${PACKAGER} remove -y ${DEPENDENCIES}
     else
